@@ -15,4 +15,4 @@ jobs:
           issue_assignees: oke-py
           issue_labels: vulnerability,test
           dedupe_issues: true
-        working-directory: ./frontend
+          working_directory: ./frontend
