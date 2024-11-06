@@ -14,9 +14,9 @@ jobs:
         run: | 
          cd frontend/ 
          npm i
-         ll
+         ls ${{ github.workspace }}
       - name: Install dependencies for the backend
         run: | 
          cd frontend/ 
          npm i
-         ll
+         ls ${{ github.workspace }}
