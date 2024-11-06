@@ -10,8 +10,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-      - name: Change current dir to frontend app
-        run: cd frontend/
-      - run: pwd
       - name: Install dependencies
-        run: npm i
+        run: | 
+        cd frontend/ 
+        npm i
