@@ -15,11 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Login to docker
-      env:
-        DOCKER_USER: ${{env.DOCKER_USER}}
-        DOCKER_PASSWORD: ${{env.DOCKER_PASSWORD}}
       run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build image
       run: | 
         docker build ./frontend --file dockerfile --tag todo-app-frontend:$(date +%s)
