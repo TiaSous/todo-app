@@ -1,0 +1,17 @@
+# name: npm audit pr
+
+# on: [pull_request]
+
+# jobs:
+#   scan:
+#     name: npm audit
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: oke-py/npm-audit-action@v2
+#         with:
+#           audit_level: low
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           issue_assignees: TiaSous
+#           issue_labels: vulnerability,test
+#           working_directory: ./frontend

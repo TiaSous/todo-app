@@ -1,0 +1,22 @@
+name: GitHub Actions NodeJS Test
+run-name: ${{ github.actor }} is testing out GitHub Actions with node JS
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: Install dependencies for the frontend
+        run: | 
+         cd frontend/ 
+         npm i
+         ls ${{ github.workspace }}
+      - name: Install dependencies for the backend
+        run: | 
+         cd frontend/ 
+         npm i
+         ls ${{ github.workspace }}
