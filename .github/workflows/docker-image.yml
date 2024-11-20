@@ -18,14 +18,16 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_TOKEN }}
-    - name: build frontend
-      run: |
-        docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-front:latest ./frontend
-        docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:${{ github.ref_name }} ./frontend
-    - name: build backend
-      run: | 
-        docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:latest ./backend
-        docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:${{ github.ref_name }} ./backend
+
+
+    - name: build frontend latest
+      run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-front:latest ./frontend
+    - name: build frontend tag
+      run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:${{ github.ref_name }} ./frontend
+    - name: build backend latest
+      run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:latest ./backend
+    - name: build backend tag
+      run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:${{ github.ref_name }} ./backend
     - name: Push image frontend
       run: docker push ${{secrets.DOCKER_USER}}/todo-app-vue-front
     - name: publish image backend
