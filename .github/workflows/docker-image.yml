@@ -28,7 +28,11 @@ jobs:
       run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:latest ./backend
     - name: build backend tag
       run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:${{ github.ref_name }} ./backend
-    - name: Push image frontend
-      run: docker push ${{secrets.DOCKER_USER}}/todo-app-vue-front
-    - name: publish image backend
-      run: docker push ${{secrets.DOCKER_USER}}/todo-app-vue-back
+    - name: Push image frontend latest
+      run: docker push ${{secrets.DOCKER_USER}}/todo-app-vue-front:latest
+    - name: Push image frontend tag
+      run: docker push ${{secrets.DOCKER_USER}}/todo-app-vue-front:${{ github.ref_name }}
+    - name: publish image backend latest
+      run: docker push ${{secrets.DOCKER_USER}}/todo-app-vue-back:lastest
+    - name: publish image backend tag
+      run: docker push ${{secrets.DOCKER_USER}}/todo-app-vue-back:${{ github.ref_name }}
