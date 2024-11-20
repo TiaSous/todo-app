@@ -5,7 +5,7 @@ const port = process.env.PORT || '3000';
 const env = process.env.NODE_ENV || 'development';
 const router = require('./routes');
 
-console.info(`💕💕 Server running on port ${port} and env is ${env} 💕💕`);
+console.info(`👍👍 Server running on port ${port} and env is ${env} 👍👍`);
 
 require('./database');
 
