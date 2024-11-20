@@ -38,7 +38,7 @@ jobs:
       - name: Run prettier
         run: |
           cd frontend/
-          npm run format
+          npx prettier --check .
 
   back-scan:
     name: push - Back-end
