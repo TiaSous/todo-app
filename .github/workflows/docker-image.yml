@@ -23,7 +23,7 @@ jobs:
     - name: build frontend latest
       run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-front:latest ./frontend
     - name: build frontend tag
-      run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:${{ github.ref_name }} ./frontend
+      run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-front:${{ github.ref_name }} ./frontend
     - name: build backend latest
       run: docker build -t ${{secrets.DOCKER_USER}}/todo-app-vue-back:latest ./backend
     - name: build backend tag
