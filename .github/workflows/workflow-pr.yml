@@ -1,4 +1,4 @@
-name: npm audit pr
+name: workflow pull request
 
 on: 
   pull_request:
@@ -68,3 +68,8 @@ jobs:
         run: |
           cd backend/
           npm run lint
+
+      - name: run unit tests
+        run: |
+          cd backend/
+          npm run test:ci
