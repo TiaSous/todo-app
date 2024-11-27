@@ -1,0 +1,75 @@
+name: workflow push
+
+on: 
+  push:
+   branches:
+    - dev
+    
+jobs:
+  front-scan:
+    name: push - Front-end
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
+      
+      - name: Install Node.js dependencies
+        run: |
+          cd frontend/
+          npm ci
+
+      - uses: oke-py/npm-audit-action@v2
+        with:
+          audit_level: low
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_assignees: TiaSous
+          issue_labels: vulnerability,test
+          working_directory: ./frontend
+      
+      - name: Run eslint
+        run: |
+          cd frontend/
+          npm run lint
+
+      - name: Run prettier
+        run: |
+          cd frontend/
+          npx prettier --check .
+
+  back-scan:
+    name: push - Back-end
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
+
+      - name: Install Node.js dependencies
+        run: |
+          cd backend/
+          npm ci
+
+      - uses: oke-py/npm-audit-action@v2
+        with:
+          audit_level: low
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_assignees: TiaSous
+          issue_labels: vulnerability,test
+          working_directory: ./backend
+      
+      - name: Run eslint
+        run: |
+          cd backend/
+          npm run lint
+
+      - name: run unit tests
+        run: |
+          cd backend/
+          npm run test:ci
