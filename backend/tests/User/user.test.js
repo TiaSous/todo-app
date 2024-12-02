@@ -2,9 +2,7 @@ const request = require('supertest');
 const express = require('express');
 const router = require('../../routes/index.js');
 const UserModel = require('../../database/models/user.model.js');
-const bcrypt = require('bcrypt')
-const jsonwebtoken = require('jsonwebtoken');
-const { key } = require('../../env/keys');
+const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 
 const app = express();
