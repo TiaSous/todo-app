@@ -1,13 +1,13 @@
-name: npm audit pr
+name: workflow push
 
 on: 
-  pull_request:
-    branches:
-      - main
-      
+  push:
+   branches:
+    - dev
+    
 jobs:
   front-scan:
-    name: pull request - Front-end
+    name: push - Front-end
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -41,7 +41,7 @@ jobs:
           npx prettier --check .
 
   back-scan:
-    name: pull request - Back-end
+    name: push - Back-end
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -68,3 +68,8 @@ jobs:
         run: |
           cd backend/
           npm run lint
+
+      - name: run unit tests
+        run: |
+          cd backend/
+          npm run test:ci
