@@ -1,7 +1,7 @@
 const request = require('supertest');
 const express = require('express');
 const router = require('../../routes/index.js');
-const UserModel = require('../models/user.model.js');
+const UserModel = require('../../database/models/user.model.js');
 
 const bcrypt = require("bcrypt");
 
@@ -21,7 +21,7 @@ describe('Authentification', () => {
 
         await UserModel.create({email: 'test@example.com', password: await bcrypt.hash('test', 8)})
 
-        const response = await request(app)
+        await request(app)
             .post('/api/auth')
             .send({ email: 'test@example.com', password: 'test' })
             .expect(200);
