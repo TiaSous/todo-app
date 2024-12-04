@@ -24,7 +24,7 @@ jobs:
 
       - uses: oke-py/npm-audit-action@v2
         with:
-          audit_level: low
+          audit_level: moderate
           github_token: ${{ secrets.GITHUB_TOKEN }}
           issue_assignees: TiaSous
           issue_labels: vulnerability,test
@@ -58,7 +58,7 @@ jobs:
 
       - uses: oke-py/npm-audit-action@v2
         with:
-          audit_level: low
+          audit_level: moderate
           github_token: ${{ secrets.GITHUB_TOKEN }}
           issue_assignees: TiaSous
           issue_labels: vulnerability,test
