@@ -71,13 +71,6 @@ describe('Test for the todos', () => {
         if (!userFound) {
             throw new Error('User not found');
         }
-
-        const token = jwt.sign({}, require('../../env/keys/index.js'), {
-            subject: userFound._id.toString(),
-            expiresIn: 60 * 60 * 24 * 30 * 6,
-            algorithm: 'RS256',
-        })
-
         const todo = await TodoModel.create({text: 'test', completed: false, user_id: userFound._id.toString()});
 
         
