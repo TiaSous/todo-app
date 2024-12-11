@@ -3,7 +3,7 @@ name: workflow push
 on: 
   push:
    branches:
-    - dev
+    - main
     
 jobs:
   front-scan:
